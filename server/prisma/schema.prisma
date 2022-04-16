@@ -1,0 +1,58 @@
+datasource postgres {
+  provider = "postgresql"
+  url      = env("POSTGRESQL_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  condition      Condition[]
+  createdAt      DateTime         @default(now())
+  doctor         Doctor[]         @relation(name: "doctor")
+  doctor_Id      Doctor[]         @relation(name: "doctor_Id")
+  emotionalState EmotionalState[]
+  firstName      String?
+  id             String           @id @default(cuid())
+  lastName       String?
+  password       String
+  roles          String[]
+  updatedAt      DateTime         @updatedAt
+  username       String           @unique
+}
+
+model Condition {
+  conditionName String?
+  createdAt     DateTime @default(now())
+  id            String   @id @default(cuid())
+  updatedAt     DateTime @updatedAt
+  users         User[]
+}
+
+model EmotionalState {
+  anxiety      String?
+  coping       String?
+  createdAt    DateTime @default(now())
+  feeling      String?
+  harm         String?
+  id           String   @id @default(cuid())
+  medication   String?
+  productivity String?
+  sleep        String?
+  stress       String?
+  suicide      String?
+  updatedAt    DateTime @updatedAt
+  upTo         String?
+  users        User?    @relation(fields: [usersId], references: [id])
+  usersId      String?
+}
+
+model Doctor {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  patients  User[]   @relation(name: "doctor")
+  updatedAt DateTime @updatedAt
+  user_id   User     @relation(name: "doctor_Id", fields: [user_idId], references: [id])
+  user_idId String
+}

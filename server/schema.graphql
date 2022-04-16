@@ -1,0 +1,384 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Condition {
+  conditionName: String
+  createdAt: DateTime!
+  id: String!
+  updatedAt: DateTime!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+input ConditionCreateInput {
+  conditionName: String
+  users: UserCreateNestedManyWithoutConditionsInput
+}
+
+input ConditionCreateNestedManyWithoutUsersInput {
+  connect: [ConditionWhereUniqueInput!]
+}
+
+input ConditionListRelationFilter {
+  every: ConditionWhereInput
+  none: ConditionWhereInput
+  some: ConditionWhereInput
+}
+
+input ConditionOrderByInput {
+  conditionName: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  updatedAt: SortOrder
+}
+
+input ConditionUpdateInput {
+  conditionName: String
+  users: UserUpdateManyWithoutConditionsInput
+}
+
+input ConditionUpdateManyWithoutUsersInput {
+  connect: [ConditionWhereUniqueInput!]
+  disconnect: [ConditionWhereUniqueInput!]
+  set: [ConditionWhereUniqueInput!]
+}
+
+input ConditionWhereInput {
+  conditionName: StringNullableFilter
+  id: StringFilter
+  users: UserListRelationFilter
+}
+
+input ConditionWhereUniqueInput {
+  id: String!
+}
+
+input Credentials {
+  password: String!
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Doctor {
+  createdAt: DateTime!
+  id: String!
+  patients(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+  updatedAt: DateTime!
+  userId: User
+}
+
+input DoctorCreateInput {
+  patients: UserCreateNestedManyWithoutDoctorsInput
+  user_id: UserWhereUniqueInput!
+}
+
+input DoctorCreateNestedManyWithoutUsersInput {
+  connect: [DoctorWhereUniqueInput!]
+}
+
+input DoctorListRelationFilter {
+  every: DoctorWhereInput
+  none: DoctorWhereInput
+  some: DoctorWhereInput
+}
+
+input DoctorOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  updatedAt: SortOrder
+  user_idId: SortOrder
+}
+
+input DoctorUpdateInput {
+  patients: UserUpdateManyWithoutDoctorsInput
+  user_id: UserWhereUniqueInput
+}
+
+input DoctorUpdateManyWithoutUsersInput {
+  connect: [DoctorWhereUniqueInput!]
+  disconnect: [DoctorWhereUniqueInput!]
+  set: [DoctorWhereUniqueInput!]
+}
+
+input DoctorWhereInput {
+  id: StringFilter
+  patients: UserListRelationFilter
+  user_id: UserWhereUniqueInput
+}
+
+input DoctorWhereUniqueInput {
+  id: String!
+}
+
+type EmotionalState {
+  anxiety: String
+  coping: String
+  createdAt: DateTime!
+  feeling: String
+  harm: String
+  id: String!
+  medication: String
+  productivity: String
+  sleep: String
+  stress: String
+  suicide: String
+  upTo: String
+  updatedAt: DateTime!
+  users: User
+}
+
+input EmotionalStateCreateInput {
+  anxiety: String
+  coping: String
+  feeling: String
+  harm: String
+  medication: String
+  productivity: String
+  sleep: String
+  stress: String
+  suicide: String
+  upTo: String
+  users: UserWhereUniqueInput
+}
+
+input EmotionalStateCreateNestedManyWithoutUsersInput {
+  connect: [EmotionalStateWhereUniqueInput!]
+}
+
+input EmotionalStateListRelationFilter {
+  every: EmotionalStateWhereInput
+  none: EmotionalStateWhereInput
+  some: EmotionalStateWhereInput
+}
+
+input EmotionalStateOrderByInput {
+  anxiety: SortOrder
+  coping: SortOrder
+  createdAt: SortOrder
+  feeling: SortOrder
+  harm: SortOrder
+  id: SortOrder
+  medication: SortOrder
+  productivity: SortOrder
+  sleep: SortOrder
+  stress: SortOrder
+  suicide: SortOrder
+  upTo: SortOrder
+  updatedAt: SortOrder
+  usersId: SortOrder
+}
+
+input EmotionalStateUpdateInput {
+  anxiety: String
+  coping: String
+  feeling: String
+  harm: String
+  medication: String
+  productivity: String
+  sleep: String
+  stress: String
+  suicide: String
+  upTo: String
+  users: UserWhereUniqueInput
+}
+
+input EmotionalStateUpdateManyWithoutUsersInput {
+  connect: [EmotionalStateWhereUniqueInput!]
+  disconnect: [EmotionalStateWhereUniqueInput!]
+  set: [EmotionalStateWhereUniqueInput!]
+}
+
+input EmotionalStateWhereInput {
+  anxiety: StringNullableFilter
+  coping: StringNullableFilter
+  feeling: StringNullableFilter
+  harm: StringNullableFilter
+  id: StringFilter
+  medication: StringNullableFilter
+  productivity: StringNullableFilter
+  sleep: StringNullableFilter
+  stress: StringNullableFilter
+  suicide: StringNullableFilter
+  upTo: StringNullableFilter
+  users: UserWhereUniqueInput
+}
+
+input EmotionalStateWhereUniqueInput {
+  id: String!
+}
+
+type MetaQueryPayload {
+  count: String!
+}
+
+type Mutation {
+  createCondition(data: ConditionCreateInput!): Condition!
+  createDoctor(data: DoctorCreateInput!): Doctor!
+  createEmotionalState(data: EmotionalStateCreateInput!): EmotionalState!
+  createUser(data: UserCreateInput!): User!
+  deleteCondition(where: ConditionWhereUniqueInput!): Condition!
+  deleteDoctor(where: DoctorWhereUniqueInput!): Doctor!
+  deleteEmotionalState(where: EmotionalStateWhereUniqueInput!): EmotionalState!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  login(credentials: Credentials!): UserInfo!
+  updateCondition(data: ConditionUpdateInput!, where: ConditionWhereUniqueInput!): Condition!
+  updateDoctor(data: DoctorUpdateInput!, where: DoctorWhereUniqueInput!): Doctor!
+  updateEmotionalState(data: EmotionalStateUpdateInput!, where: EmotionalStateWhereUniqueInput!): EmotionalState!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
+type Query {
+  _conditionsMeta(orderBy: [ConditionOrderByInput!], skip: Float, take: Float, where: ConditionWhereInput): MetaQueryPayload!
+  _doctorsMeta(orderBy: [DoctorOrderByInput!], skip: Float, take: Float, where: DoctorWhereInput): MetaQueryPayload!
+  _emotionalStatesMeta(orderBy: [EmotionalStateOrderByInput!], skip: Float, take: Float, where: EmotionalStateWhereInput): MetaQueryPayload!
+  _usersMeta(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): MetaQueryPayload!
+  condition(where: ConditionWhereUniqueInput!): Condition
+  conditions(orderBy: [ConditionOrderByInput!], skip: Float, take: Float, where: ConditionWhereInput): [Condition!]!
+  doctor(where: DoctorWhereUniqueInput!): Doctor
+  doctors(orderBy: [DoctorOrderByInput!], skip: Float, take: Float, where: DoctorWhereInput): [Doctor!]!
+  emotionalState(where: EmotionalStateWhereUniqueInput!): EmotionalState
+  emotionalStates(orderBy: [EmotionalStateOrderByInput!], skip: Float, take: Float, where: EmotionalStateWhereInput): [EmotionalState!]!
+  user(where: UserWhereUniqueInput!): User
+  userInfo: UserInfo!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+type User {
+  condition(orderBy: [ConditionOrderByInput!], skip: Float, take: Float, where: ConditionWhereInput): [Condition!]!
+  createdAt: DateTime!
+  doctor(orderBy: [DoctorOrderByInput!], skip: Float, take: Float, where: DoctorWhereInput): [Doctor!]!
+  doctorId(orderBy: [DoctorOrderByInput!], skip: Float, take: Float, where: DoctorWhereInput): [Doctor!]!
+  emotionalState(orderBy: [EmotionalStateOrderByInput!], skip: Float, take: Float, where: EmotionalStateWhereInput): [EmotionalState!]!
+  firstName: String
+  id: String!
+  lastName: String
+  roles: [String!]!
+  updatedAt: DateTime!
+  username: String!
+}
+
+input UserCreateInput {
+  condition: ConditionCreateNestedManyWithoutUsersInput
+  doctor: DoctorCreateNestedManyWithoutUsersInput
+  doctor_Id: DoctorCreateNestedManyWithoutUsersInput
+  emotionalState: EmotionalStateCreateNestedManyWithoutUsersInput
+  firstName: String
+  lastName: String
+  password: String!
+  roles: [String!]!
+  username: String!
+}
+
+input UserCreateNestedManyWithoutConditionsInput {
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateNestedManyWithoutDoctorsInput {
+  connect: [UserWhereUniqueInput!]
+}
+
+type UserInfo {
+  accessToken: String
+  roles: [String!]!
+  username: String!
+}
+
+input UserListRelationFilter {
+  every: UserWhereInput
+  none: UserWhereInput
+  some: UserWhereInput
+}
+
+input UserOrderByInput {
+  createdAt: SortOrder
+  firstName: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  password: SortOrder
+  roles: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  condition: ConditionUpdateManyWithoutUsersInput
+  doctor: DoctorUpdateManyWithoutUsersInput
+  doctor_Id: DoctorUpdateManyWithoutUsersInput
+  emotionalState: EmotionalStateUpdateManyWithoutUsersInput
+  firstName: String
+  lastName: String
+  password: String
+  roles: [String!]
+  username: String
+}
+
+input UserUpdateManyWithoutConditionsInput {
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+}
+
+input UserUpdateManyWithoutDoctorsInput {
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+}
+
+input UserWhereInput {
+  condition: ConditionListRelationFilter
+  doctor: DoctorListRelationFilter
+  doctor_Id: DoctorListRelationFilter
+  emotionalState: EmotionalStateListRelationFilter
+  firstName: StringNullableFilter
+  id: StringFilter
+  lastName: StringNullableFilter
+  username: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}
