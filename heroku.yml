@@ -5,5 +5,7 @@ setup:
 build:
   docker:
     web: Dockerfile
+release:
+  command: npm run db:init
 run: 
   web: npm run start
