@@ -20,20 +20,20 @@ RUN npm i -g npm@8.1.2
 WORKDIR /app
 
 # Copy files specifying dependencies
-COPY server/package.json server/package-lock.json ./server/
-COPY server/.env ./server/
+COPY package.json package-lock.json ./
+COPY .env ./
 
 # COPY admin-ui/package.json admin-ui/package-lock.json ./admin-ui/
 
 # Install dependencies
-RUN cd server; npm i --loglevel=$NPM_LOG_LEVEL;
+RUN npm i --loglevel=$NPM_LOG_LEVEL;
 # RUN cd admin-ui; npm ci --loglevel=$NPM_LOG_LEVEL;
 
 # Copy Prisma schema
-COPY server/prisma/schema.prisma ./server/prisma/
+COPY prisma/schema.prisma ./prisma/
 
 # Generate Prisma client
-RUN cd server; npm run prisma:generate;
+RUN npm run prisma:generate;
 
 # Generate Prisma client
 # RUN cd server; npm run db:init;
@@ -42,7 +42,7 @@ RUN cd server; npm run prisma:generate;
 COPY . .
 
 # Build code
-RUN set -e; (cd server; npm run build)
+RUN set -e; (npm run build)
 
 # Expose the port the server listens to
 EXPOSE 3000
@@ -51,4 +51,4 @@ EXPOSE 3000
 # ENV SERVE_STATIC_ROOT_PATH=admin-ui/build
 
 # Run server
-CMD [ "node", "server/dist/main"]
+CMD [ "node", "dist/main"]
