@@ -7,7 +7,7 @@ build:
     web: Dockerfile
 release:
   command: 
-    - npm run db:init
+    - npm run db:deploy
   image: web
 run: 
   web: npm run start

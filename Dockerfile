@@ -14,7 +14,7 @@ ENV NPM_CONFIG_FUND=false
 # RUN apt-get install g++ gcc make python3
 
 # Update npm to version 7
-RUN npm i -g npm@8.1.2
+RUN npm i -g npm@8.7.0
 
 # Set the working directory
 WORKDIR /app
