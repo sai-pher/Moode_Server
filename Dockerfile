@@ -11,7 +11,7 @@ ENV NPM_CONFIG_AUDIT=false
 ENV NPM_CONFIG_FUND=false
 
 # Add python dependancy
-RUN apt-get install g++ gcc make python3
+# RUN apt-get install g++ gcc make python3
 
 # Update npm to version 7
 RUN npm i -g npm@8.1.2

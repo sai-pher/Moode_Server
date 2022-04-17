@@ -1,17 +1,21 @@
 import { PrismaClient } from "@prisma/client";
 
-export async function customSeed() {
-  const client = new PrismaClient();
-  const username = "admin";
+// TODO: Make more SECURITY rhobust (M - SR)
 
-  //replace this sample code to populate your database
-  //with data that is required for your application to start
-  await client.user.update({
-    where: { username: username },
-    data: {
-      username,
-    },
-  });
+export async function customSeed(devUsers: any) {
+  const client = new PrismaClient();
+
+  for (const user of devUsers) {
+    
+    await client.user.upsert({
+      where: { username: user.username },
+      update: {},
+      create: user,
+    });
+    console.info(`Added  ${user.username} ...`);
+
+  }
 
   client.$disconnect();
+
 }
