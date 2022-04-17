@@ -8,6 +8,7 @@ generator client {
 }
 
 model User {
+  
   condition      Condition[]
   createdAt      DateTime         @default(now())
   doctor         Doctor[]         @relation(name: "doctor")
