@@ -1,18 +1,18 @@
 {
-  "dataServiceGeneratorVersion": "0.12.4",
+  "dataServiceGeneratorVersion": "0.12.7",
   "appInfo": {
     "name": "Moode",
     "description": "A mobile application to allow users to track and measure their emotional state over time.",
-    "version": "zuvx4b8c",
-    "id": "Moode",
-    "url": "https://app.amplication.com/cl153llad12888201s6gqgmsqpk",
+    "version": "034r7km2",
+    "id": "cl153llad12888201s6gqgmsqpk",
+    "url": "https://server.amplication.com/cl153llad12888201s6gqgmsqpk",
     "settings": {
       "dbHost": "localhost",
       "dbName": "MoodeDB",
       "dbPassword": "admin",
       "dbPort": 5432,
       "dbUser": "admin",
-      "appId": "Moode",
+      "appId": "cl153llad12888201s6gqgmsqpk",
       "authProvider": "Jwt"
     }
   }
